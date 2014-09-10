@@ -58,14 +58,35 @@ object Test {
 
     val ep = inImage[List, List[String], String]
 
-    def doSomething[O, LO: Apply[List]#to[O]#is](lo: LO)(implicit conv: Apply[List]#to[O]#is[LO]): O = {
+    trait A {
+
+      val something: Int = 1
+    }
+
+    def doSomething[O, LO](lo: LO)(implicit conv: Apply[List]#to[O]#is[LO]): O = {
 
       import conv._
 
       lo.head
     }
 
-    val buh = doSomething(uh)
+    val buh:String = doSomething(uh)
+
+    val hub = doSomething(List(new A {})).something
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // functors
     trait AnyFunctor { type F[X] }

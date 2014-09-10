@@ -110,3 +110,16 @@ The return types guide inference now [SI-3346](https://issues.scala-lang.org/bro
 import always at the scope where you need something. This is not bad in itself, and it could help with implicits.
 
 - [SI-5639](https://issues.scala-lang.org/browse/SI-5639)
+
+
+- naked refinements work in general, but not for when you want something to be infer structurally; in that case you need type aliases: `type AnyA.withX[X0] = AnyA { type X = X0 }`
+- *but* if every time you need that you have _a stable type_ (a trait/class whatever) which makes that refinement satisfied then they work
+- they (either refinements or aliases) *don't* work as return types; so you need those traits anyway
+- but you need those aliases where you want in some other scope something like `type MyA <: AnyA.with[Z]`
+
+### guides
+
+_WIP_
+
+- use naked refinements for bounds
+- use traits satisfying all the bounds you want for return types
