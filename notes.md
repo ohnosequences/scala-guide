@@ -96,6 +96,8 @@ Always define them in the companion object. I think they are implemented as exis
 
 - [SI-4867](https://issues.scala-lang.org/browse/SI-4867) _existentials work with alias, not so if naked_
 - [SI-4377](https://issues.scala-lang.org/browse/SI-4377) _uh oh you cannot project and then extract_
+- [SI-7278](https://issues.scala-lang.org/browse/SI-7278) _with and type projections => unsoundness_
+
 
 ## refinements and with and bounds
 
