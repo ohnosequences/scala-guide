@@ -1,9 +1,9 @@
-# oh no sequences! advanced Scala guide
 
-## tagged types
+Right now some random stuff on different topics with linked issues.
+
+## tagged types and value classes
 
 - https://groups.google.com/forum/#!topic/shapeless-dev/_UDrpQEV22w
-- ...
 - https://stackoverflow.com/questions/6795623/why-do-these-type-arguments-not-conform-to-a-type-refinement
 - https://stackoverflow.com/questions/6631155/how-to-specialize-on-a-type-projection-in-scala
 - https://stackoverflow.com/questions/10343244/why-doesnt-type-inference-work-here/10347307#10347307
@@ -17,7 +17,7 @@
 
 ## nested traits/classes
 
-This causes a lot of problems, and you don't need it in general.
+This causes a lot of problems, and you don't need it in general. _TODO explain the general pattern_
 
 #### related issues
 
@@ -31,11 +31,15 @@ This causes a lot of problems, and you don't need it in general.
 
 #### related issues
 
-- [SI-8635](https://issues.scala-lang.org/browse/SI-8635)
+- [SI-8635](https://issues.scala-lang.org/browse/SI-8635) _you cannot use type aliases_
+
+This looks like a minor issue, but think about its implications on separate compilation.
 
 ## variance
 
-- [SI-8563](https://issues.scala-lang.org/browse/SI-8563) _unsound GADT_
+don't use variance.
+
+- [SI-8563](https://issues.scala-lang.org/browse/SI-8563) _unsound pattern matching over variant GADTs_
 - [SI-4889](https://issues.scala-lang.org/browse/SI-4889)
 
 ## Singleton types
@@ -46,7 +50,10 @@ This causes a lot of problems, and you don't need it in general.
 
 ## Pattern Matching
 
-- When matching GADTs à la sealed trait, things basically doesn't work when the type is not uniform.
+- When matching GADTs à la sealed trait, things basically doesn't work when the type is not uniform. 
+- There are also issues with variant GADTs: see [Open GADTs and Declaration-site Variance: A Problem Statement](http://lampwww.epfl.ch/~hmiller/scala2013/resources/pdfs/paper5.pdf)
+
+Part of it is not directly related with variance though; see 7714 below
 
 #### related issues
 
@@ -110,8 +117,6 @@ The return types guide inference now [SI-3346](https://issues.scala-lang.org/bro
 import always at the scope where you need something. This is not bad in itself, and it could help with implicits.
 
 - [SI-5639](https://issues.scala-lang.org/browse/SI-5639)
-
-
 - naked refinements work in general, but not for when you want something to be infer structurally; in that case you need type aliases: `type AnyA.withX[X0] = AnyA { type X = X0 }`
 - *but* if every time you need that you have _a stable type_ (a trait/class whatever) which makes that refinement satisfied then they work
 - they (either refinements or aliases) *don't* work as return types; so you need those traits anyway

@@ -4,7 +4,7 @@ organization := "ohnosequences"
 
 name := "scala-guide"
 
-description := "scala-guide project"
+description := ""
 
 bucketSuffix := "era7.com"
 
