@@ -24,6 +24,14 @@ object demo {
   import scala.language.existentials
 
   /*
+    # Projections vs existentials
+
+    - https://groups.google.com/forum/#!msg/scala-internals/lJ47m3j8lGc/JCbfrTx8_UcJ
+    - https://groups.google.com/forum/#!msg/scala-internals/lJ47m3j8lGc/JCbfrTx8_UcJ
+
+  */
+
+  /*
     According to the spec, `A#B` should be a supertype of the existential `a.B forSome { val a: A }`. This works nicely:
   */
   val exSubProj = implicitly[ (a.B forSome { val a: A }) <:< A#B ]
