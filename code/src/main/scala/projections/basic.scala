@@ -81,6 +81,8 @@ object demo {
 
     type MyB = MyUsesA#MyA#B
   }
+
+
 }
 
 

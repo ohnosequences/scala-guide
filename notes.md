@@ -99,12 +99,14 @@ Always define them in the companion object. I think they are implemented as exis
 
 ## refinements and with and bounds
 
-Do not use naked refinements. Create aliases in objects. But then, not always!
+Do not use naked refinements. Create aliases in objects. But then, not always! _TODO add our current guide_
 
 - [SI-8757](https://issues.scala-lang.org/browse/SI-8757)
 - [SI-7647](https://issues.scala-lang.org/browse/SI-7647) _returning `A with B` doesn't work_
 - [SI-8709](https://issues.scala-lang.org/browse/SI-8709) _type inference does not work with aliases_
 - [SI-4447](https://issues.scala-lang.org/browse/SI-4447) _<: is not transitive_
+
+One of the problems here is that `with` is commutative at the level of bounds, but it is not at with respect to type members: `(A with B)#C` is who knows what if _both_ `A` and `B` have a type member `C`; in general `(A with B)#C` will be different from `(B with A)#C`, _but_ `X <: (A with B)` iff `X <: B with A` and then in theory the same should happen for their projections.
 
 ## implicits
 
