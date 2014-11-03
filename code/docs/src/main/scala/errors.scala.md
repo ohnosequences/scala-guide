@@ -1,6 +1,9 @@
-package ohnosequences.scalaguide.errors
 
-/*
+```scala
+package ohnosequences.scalaguide.errors
+```
+
+
 ## Error handling
 
 _You can skip all this and look at the code; but please do mind the chasm between can and should_
@@ -18,13 +21,13 @@ which we want, of course, to be able compose.
 Normally we want to fix the type of Errors, so we get a functor
 
 $$
-  C_E \colon \mathbf{Type} \to \mathbf{Type}
+C_E \colon \mathbf{Type} \to \mathbf{Type}
 $$
 
 Letting our errors vary we can see this as a lax functor
 
 $$
-  C \colon (\mathbf{Type}, +) \to (\mathbf{Type} \Rightarrow \mathbf{Type}, \circ)
+C \colon (\mathbf{Type}, +) \to (\mathbf{Type} \Rightarrow \mathbf{Type}, \circ)
 $$
 
 How? the unit is just $C_0 = Id$ and the the lax (actually strong) structure comes from associativity: $C_E \circ C_F \to C_{E + F}$. Note that we are **not** saying anything about _each_ $C_E$, it is $C$ who's a lax monoidal functor. If you remember the characterization of cocartesian monoidal categories among monoidal ones, it wouldn't be a surprise to know that every $E$ in $(\mathbf{Type}, +)$ carries a unique **monoid** structure
@@ -62,7 +65,7 @@ $$
 Making use of distributivity (could actually be lax)
 
 $$
-  \alpha \colon E^2 + (E \times A) + (E \times B) + (A \times B) \to E + (A \times B)
+\alpha \colon E^2 + (E \times A) + (E \times B) + (A \times B) \to E + (A \times B)
 $$
 
 and our map is $\alpha_{A,B} = [m_E, \pi_E, \pi_E] + 1_{A \times B}$. The lax monoidal structure derived from the fail-fast monad would be just return $E$ if present anywhere, else $(A \times B)$.
@@ -92,8 +95,9 @@ Just for myself for now
 _TODO write checks so that they are reusable_
 
 
-*/
 
+
+```scala
 import scalaz._
 import syntax.validation._
 import syntax.apply._
@@ -136,3 +140,30 @@ object FailFastWonky {
 }
 
 // write tests if you want to see the difference
+```
+
+
+------
+
+### Index
+
++ src
+  + test
+    + scala
+      + [Scalaguide.scala][test/scala/Scalaguide.scala]
+  + main
+    + scala
+      + [typeMembers.scala][main/scala/typeMembers.scala]
+      + [taggedTypes.scala][main/scala/taggedTypes.scala]
+      + [refinementsAndWith.scala][main/scala/refinementsAndWith.scala]
+      + [existentials.scala][main/scala/existentials.scala]
+      + [Scalaguide.scala][main/scala/Scalaguide.scala]
+      + [errors.scala][main/scala/errors.scala]
+
+[test/scala/Scalaguide.scala]: ../../test/scala/Scalaguide.scala.md
+[main/scala/typeMembers.scala]: typeMembers.scala.md
+[main/scala/taggedTypes.scala]: taggedTypes.scala.md
+[main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
+[main/scala/existentials.scala]: existentials.scala.md
+[main/scala/Scalaguide.scala]: Scalaguide.scala.md
+[main/scala/errors.scala]: errors.scala.md
