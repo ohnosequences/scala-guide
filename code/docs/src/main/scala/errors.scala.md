@@ -105,8 +105,6 @@ import scalaz._
 import syntax.validation._
 import syntax.apply._
 
-// TODO rewrite this with checks returning \/ and convert in the Validation case
-
 trait Error[T]
 case class MustHaveLengthFive(s: String) extends Error[Wonky]
 case class MustBePalindromic(s: String) extends Error[Wonky]
@@ -139,7 +137,7 @@ object FailFastChecks {
   implicit class ErrorstoV[A](val v: ErrorsOr[A]) {
 
     def validationNel: ValidationNel[Error[Wonky], A] = v match {
-      
+
       case -\/(e) => e.failureNel
       case \/-(a) => a.success
     }
