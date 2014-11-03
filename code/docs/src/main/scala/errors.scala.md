@@ -92,8 +92,11 @@ Just for myself for now
 
 ### good practices
 
-_TODO write checks so that they are reusable_
+Only some tips for now
 
+1. write primitive computations with `\/` as a return type; you need to choose, and `\/` is a more natural type.
+2. `NonEmptyList[E]` can be ok for simple cases, but in general it is way better to write your own monoid instance for errors
+3. For Scalaz stuff you only need a semigroup (I hate this name). I don't see the point. If building your own monoid for errors, it is much better in practice to use as a unit something like `UnknownError` which when combined with any other error should yield the other, more specific one.
 
 
 
@@ -102,6 +105,7 @@ import scalaz._
 import syntax.validation._
 import syntax.apply._
 
+// TODO rewrite this with checks returning \/ and convert in the Validation case
 
 trait Error[T]
 case class MustHaveLengthFive(s: String) extends Error[Wonky]
@@ -109,19 +113,19 @@ case class MustBePalindromic(s: String) extends Error[Wonky]
 
 object checks {
 
-  type ErrorsOr[A] = ValidationNel[Error[Wonky], A]
+  // type ErrorsOr[A] = ValidationNel[Error[Wonky], A]
 
-  def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) MustHaveLengthFive(s).failureNel else s.success 
-  def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) MustBePalindromic(s).failureNel else s.success 
+  // def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) MustHaveLengthFive(s).failureNel else s.success 
+  // def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) MustBePalindromic(s).failureNel else s.success 
 }
 
 case class Wonky protected[errors] (val five: String, val palindrome: String)
 
 object ValidWonky {
 
-  import checks._ 
+  import FailFastChecks._ 
     
-    def apply(a: String, b: String) = ( lengthFive(a) |@| palindromic(b) )(Wonky.apply _)
+    def apply(a: String, b: String) = ( lengthFive(a).validationNel |@| palindromic(b).validationNel )(Wonky.apply _)
 }
 
 object FailFastChecks {
@@ -130,6 +134,17 @@ object FailFastChecks {
 
   def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) -\/(MustHaveLengthFive(s)) else \/-(s)
   def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) -\/(MustBePalindromic(s)) else \/-(s)
+
+  // TODO use Scalaz
+  implicit class ErrorstoV[A](val v: ErrorsOr[A]) {
+
+    def validationNel: ValidationNel[Error[Wonky], A] = v match {
+      
+      case -\/(e) => e.failureNel
+      case \/-(a) => a.success
+    }
+  }
+  
 }
 
 object FailFastWonky {
@@ -140,6 +155,7 @@ object FailFastWonky {
 }
 
 // write tests if you want to see the difference
+
 ```
 
 
