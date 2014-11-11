@@ -146,7 +146,7 @@ object FailFastChecks {
   def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) -\/(MustHaveLengthFive(s)) else \/-(s)
   def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) -\/(MustBePalindromic(s)) else \/-(s)
 
-  // TODO use Scalaz
+  // TODO add this to Scalaz
   implicit class ErrorstoV[A](val v: ErrorsOr[A]) {
 
     def validationNel: ValidationNel[Error[Wonky], A] = v match {
