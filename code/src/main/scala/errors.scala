@@ -130,7 +130,13 @@ object ValidWonky {
 
   import FailFastChecks._ 
     
-    def apply(a: String, b: String) = ( lengthFive(a).validationNel |@| palindromic(b).validationNel )(Wonky.apply _)
+    def apply(fiveChars: String, palindrome: String): ValidationNel[Error[Wonky], Wonky] = {
+
+      ( 
+        lengthFive(fiveChars).validationNel   |@| 
+        palindromic(palindrome).validationNel 
+      )(Wonky.apply _)
+    }
 }
 
 object FailFastChecks {
@@ -156,7 +162,7 @@ object FailFastWonky {
 
   import FailFastChecks._ 
     
-  def apply(a: String, b: String) = ( lengthFive(a) |@| palindromic(b) )(Wonky.apply _)
+  def apply(fiveChars: String, palindrome: String) = (lengthFive(fiveChars) |@| palindromic(palindrome))(Wonky.apply _)
 }
 
 // write tests if you want to see the difference
