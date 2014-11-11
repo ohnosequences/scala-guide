@@ -116,28 +116,7 @@ trait Error[T]
 case class MustHaveLengthFive(s: String) extends Error[Wonky]
 case class MustBePalindromic(s: String) extends Error[Wonky]
 
-object checks {
-
-  // type ErrorsOr[A] = ValidationNel[Error[Wonky], A]
-
-  // def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) MustHaveLengthFive(s).failureNel else s.success 
-  // def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) MustBePalindromic(s).failureNel else s.success 
-}
-
-case class Wonky protected[errors] (val five: String, val palindrome: String)
-
-object ValidWonky {
-
-  import FailFastChecks._ 
-    
-    def apply(fiveChars: String, palindrome: String): ValidationNel[Error[Wonky], Wonky] = {
-
-      ( 
-        lengthFive(fiveChars).validationNel   |@| 
-        palindromic(palindrome).validationNel 
-      )(Wonky.apply _)
-    }
-}
+case class Wonky protected[errors](val five: String, val palindrome: String)
 
 object FailFastChecks {
 
@@ -146,23 +125,31 @@ object FailFastChecks {
   def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) -\/(MustHaveLengthFive(s)) else \/-(s)
   def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) -\/(MustBePalindromic(s)) else \/-(s)
 
-  // TODO add this to Scalaz
+  // TODO: add this to Scalaz
   implicit class ErrorstoV[A](val v: ErrorsOr[A]) {
 
     def validationNel: ValidationNel[Error[Wonky], A] = v match {
-
       case -\/(e) => e.failureNel
       case \/-(a) => a.success
     }
   }
-  
+}
+
+/* Two constructors for `Wonky`. See difference in the tests */
+object AccumulativeWonky {
+  import FailFastChecks._ 
+    
+  def apply(fiveChars: String, palindrome: String): ValidationNel[Error[Wonky], Wonky] =
+    (lengthFive(fiveChars).validationNel |@| 
+     palindromic(palindrome).validationNel
+    )(Wonky.apply _)
 }
 
 object FailFastWonky {
-
   import FailFastChecks._ 
     
-  def apply(fiveChars: String, palindrome: String) = (lengthFive(fiveChars) |@| palindromic(palindrome))(Wonky.apply _)
+  def apply(fiveChars: String, palindrome: String): Validation[Error[Wonky], Wonky] = 
+    (lengthFive(fiveChars) |@|
+     palindromic(palindrome)
+    )(Wonky.apply _).validation 
 }
-
-// write tests if you want to see the difference

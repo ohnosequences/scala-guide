@@ -17,23 +17,21 @@ class ErrorHandlingExamples extends FunSuite {
       palindrome = notPalindromic
     )
 
-    assert( 
-      notOk == -\/(MustHaveLengthFive(notFiveChars)) 
-    )
+    assert{ notOk == Failure(MustHaveLengthFive(notFiveChars)) }
 
     info(s"trying to create a Wonky with an error in both params yields the first one: ${notOk}")
   }
 
   test("accumulate errors examples") {
 
-    val notOk = ValidWonky(
+    val notOk = AccumulativeWonky(
       fiveChars = notFiveChars,
       palindrome = notPalindromic
     )
 
+    assert{ notOk == Failure(NonEmptyList(MustHaveLengthFive("012345"), MustBePalindromic("aaaca"))) }
+
     info(s"trying to create a Wonky with an error in both params yields both errors: ${notOk}")
-
-
   } 
 }
 
