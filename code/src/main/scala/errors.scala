@@ -5,13 +5,17 @@ package ohnosequences.scalaguide.errors
 
 _You can skip all this and look at the code; but please do mind the chasm between can and should_
 
-Intuitively, handling errors is control flow and thus it should linked/make use of colimits. A simple but effective model is
+Intuitively, handling errors is control flow and thus it should be linked/make use of colimits. A simple but effective model is to structure computations as
 
 ``` scala
-val computation: Input => Error + Success
+val computation: Input => (Error + Success)
 ```
 
-which we want, of course, to be able compose. 
+which we want, of course, to be able to compose. A simplifying assumption is (given the limitations of Scala in particular and existing programming languages in general) to _fix_ the `Error` type; in this case our notion of computation with errors look like arrows in the Kleisli category of the functor
+
+$$
+  
+$$
 
 ### fail fast
 
@@ -68,6 +72,13 @@ $$
 and our map is $\alpha_{A,B} = [m_E, \pi_E, \pi_E] + 1_{A \times B}$. The lax monoidal structure derived from the fail-fast monad would be just return $E$ if present anywhere, else $(A \times B)$.
 
 This is `Validation[E,X]`.
+
+
+### algebras for applicatives
+
+- applicatives are actually pointed lax monoidal functors
+- algebras are important; they are something akin to evaluation strategies; think about futures.
+- in the case of errors they give us a way of handling errors that is not going to introduce more errors :)
 
 -----
 
