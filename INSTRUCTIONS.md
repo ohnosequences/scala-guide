@@ -35,6 +35,11 @@ These steps you need to do only once.
 * It uses KaTeX plugin to render maths and it requires for some reason all math expressions to be in **double** dollar sings (even for inline math).
 
 
+## Config
+
+**Very important**: `book.json` config cannot have comments. With comments it won't say you anything, like it's fine, but won't actually read this config
+
+
 ## Preview
 
 ```bash

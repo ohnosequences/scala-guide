@@ -1,61 +1,33 @@
 {
-    // Folders to use for output
-    // Caution: it overrides the value from the command line
-    // It's not advised this option in the book.json
     "output": "_book",
-
-    // Generator to use for building
-    // Caution: it overrides the value from the command line
-    // It's not advised this option in the book.json
     "generator": "site",
 
-    // Book title and description (defaults are extracted from the README)
-    "title": null,
-    "description": null,
+    "title": "Oh no scala!",
+    "description": "The advanced Scala helper",
 
-    // Plugins list, can contain "-name" for removing default plugins
     "plugins": [
-        "katex",
-        "richquotes",
-        "anchors"
-        // "share"
+        "richquotes"
     ],
 
-    // Global configuration for plugins
     "pluginsConfig": {
         "fontSettings": {
-            "theme": "sepia", // "night" or "white",
-            "family": "sans", // or "serif"
-            "size": 1 //to 4
-        },
-
-        "richquotes" : {
-            "todos" : true
+            "theme": "white",
+            "family": "sans",
+            "size": 1
         }
-
-        // "share": {
-        //     "twitter": null,
-        //     "facebook": null
-        // }
     },
 
-    // Variables for templating
     "variables": {},
 
-    // Links in template (null: default, false: remove, string: new value)
     "links": {
-        // Custom links at top of sidebar
         "sidebar": {
             "Project repository": "https://github.com/ohnosequences/scala-guide",
             "Contact us": "https://gitter.im/ohnosequences/scala-guide"
         },
 
-        // Sharing links
         "sharing": {
-            // "google": null,
-            "facebook": null,
-            "twitter": null,
-            // "weibo": null,
+            "facebook": "",
+            "twitter": "",
             "all": null
         }
     }
