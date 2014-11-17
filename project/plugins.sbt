@@ -3,3 +3,5 @@ resolvers ++= Seq(
 )
 
 addSbtPlugin("ohnosequences" % "nice-sbt-settings" % "0.4.0")
+
+dependencyOverrides += "ohnosequences" % "literator" % "0.6.0"

@@ -6,7 +6,10 @@
     "description": "The Advanced Scala Helper",
 
     "plugins": [
-        "richquotes"
+        "mathjax",
+        "-katex",
+        "richquotes",
+        "toc"
     ],
 
     "pluginsConfig": {
@@ -24,7 +27,7 @@
         },
 
         "sharing": {
-            "facebook": "",
+            "facebook": "https://github.com/ohnosequences/scala-guide",
             "twitter": "https://github.com/ohnosequences/scala-guide",
             "all": null
         }

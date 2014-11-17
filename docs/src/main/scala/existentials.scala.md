@@ -28,7 +28,6 @@ sealed class ImageOfAux[F0[_], FA0 <% F0[A0], A0] extends ImageOf[F0, FA0] with 
 object ImageOf {
  
   type imgOf[F[_]] = {
-    type λ[FA] = ImageOf[F,FA]
     type is[FA] = ImageOf[F,FA]
   }
 
@@ -75,19 +74,6 @@ object Test {
     val buh:String = doSomething(uh)
 
     val hub = doSomething(List(new A {})).something
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // functors
@@ -143,6 +129,7 @@ object Test {
     
   }
 }
+
 ```
 
 
@@ -151,22 +138,20 @@ object Test {
 ### Index
 
 + src
-  + test
-    + scala
-      + [Scalaguide.scala][test/scala/Scalaguide.scala]
   + main
     + scala
-      + [typeMembers.scala][main/scala/typeMembers.scala]
-      + [taggedTypes.scala][main/scala/taggedTypes.scala]
-      + [refinementsAndWith.scala][main/scala/refinementsAndWith.scala]
-      + [existentials.scala][main/scala/existentials.scala]
-      + [Scalaguide.scala][main/scala/Scalaguide.scala]
       + [errors.scala][main/scala/errors.scala]
+      + [existentials.scala][main/scala/existentials.scala]
+      + [refinementsAndWith.scala][main/scala/refinementsAndWith.scala]
+      + [taggedTypes.scala][main/scala/taggedTypes.scala]
+      + [typeMembers.scala][main/scala/typeMembers.scala]
+  + test
+    + scala
+      + [errors.scala][test/scala/errors.scala]
 
-[test/scala/Scalaguide.scala]: ../../test/scala/Scalaguide.scala.md
-[main/scala/typeMembers.scala]: typeMembers.scala.md
-[main/scala/taggedTypes.scala]: taggedTypes.scala.md
-[main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
-[main/scala/existentials.scala]: existentials.scala.md
-[main/scala/Scalaguide.scala]: Scalaguide.scala.md
 [main/scala/errors.scala]: errors.scala.md
+[main/scala/existentials.scala]: existentials.scala.md
+[main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
+[main/scala/taggedTypes.scala]: taggedTypes.scala.md
+[main/scala/typeMembers.scala]: typeMembers.scala.md
+[test/scala/errors.scala]: ../../test/scala/errors.scala.md

@@ -2,11 +2,22 @@
 
 The general workflow:
 
+- All the gitbook stuff is happening in the `docs/` folder
 - Every chapter is in it's own folder inside of `docs/` with `README.md` introduction and any related text in separate `.md` files
 - The code samples are stored in `src/` folder (like a normal sbt-project)
 - They will be transformed to markdown in `docs/src/...` by literator
 - Then everything is linked by the `SUMMARY.md` file
 - Built to the `_book/` folder and pushed to the `gh-pages` branch
+
+So you normally work with the sbt project, test code samples and then
+
+```bash
+sbt generateDocs
+cd docs
+gitbook serve
+```
+
+Then you edit other text, and publish it when it's fine.
 
 
 ## First-time preparation
@@ -17,7 +28,7 @@ These steps you need to do only once.
 
     ```bash
     npm install gitbook -g
-    npm install gitbook-plugin-katex gitbook-plugin-richquotes gitbook-plugin-share
+    npm install gitbook-plugin-richquotes gitbook-plugin-toc
     ```
 
     Note, that it will create a local `node_modules/` folder which should be ignored by git.
@@ -32,7 +43,8 @@ These steps you need to do only once.
 ## Editing
 
 * The structure of this book is in the [SUMMARY.md](SUMMARY.md) file
-* It uses KaTeX plugin to render maths and it requires for some reason all math expressions to be in **double** dollar sings (even for inline math).
+* It seems that MathJax requires _all_ math expressions to be in **double** dollar sings (even for inline math)
+  - There is a KaTeX plugin for gitbook which works 10x faster, but so far it doesn't [support](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX) much Tex
 
 
 ## Config
@@ -41,9 +53,21 @@ These steps you need to do only once.
 
 ### Plugins
 
-* [Rich quotes](https://github.com/erixtekila/gitbook-plugin-richquotes)
-  You can use quotes with annotation, like `> **Info** Info` and it will be shown nicely in the result (see the link for the full list)
-* [TOC]()
+* [Rich quotes](https://github.com/erixtekila/gitbook-plugin-richquotes)  
+    You can use quotes with annotation, like `> **Info** Info` and it will be shown nicely in the result (see the link for the full list)
+* [TOC](https://github.com/whzhyh/gitbook-plugin-toc)  
+    You can add `<!-- toc -->` in you markdown texts to generate the table of content
+
+Here is the [full list of the plugins](https://www.npmjs.org/search?q=gitbook-plugin) and here are some of them that I would add:
+
+* [include](https://github.com/rlmv/gitbook-plugin-include): allows you include files one into another
+* [quizzes](https://github.com/GitbookIO/plugin-quizzes): allows you to add simple quizzes
+* [share](https://github.com/bguiz/gitbook-plugin-share): adds sharing buttons to the pages
+* [punctuate](https://github.com/ErnWong/gitbook-plugin-punctuate): replaces things like `---` with a normal long-dash
+* [disqus](https://github.com/GitbookIO/plugin-disqus): when there is something to comment
+* [google analytics](https://github.com/GitbookIO/plugin-ga): when there is something to track
+* [KaTeX](https://github.com/GitbookIO/plugin-katex): when it supports more TeX
+
 
 ## Preview
 
@@ -75,3 +99,5 @@ Once you're fine with the changes you've introduced
     git push origin gh-pages
     cd ..
     ```
+
+You can use the `book.publish.sh` script for the last two steps.

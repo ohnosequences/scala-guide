@@ -1,8 +1,5 @@
-# scala files
-src/
-*.sbt
-project/
-target/
+*.sh
 
 # internal docs
 INSTRUCTIONS.md
+notes.md
