@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>Maths | Oh no scala!</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.3.3">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    <link rel="next" href="../src/main/scala/errors.scala.html" />
+    
+    
+    <link rel="prev" href="../Error-handling/README.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-richquotes/plugin.css">
+    
+
+
+        
+    <div class="book" data-level="1.1" data-basepath=".." data-revision="1416259552157">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	    
+            <li>
+                <a href="https://github.com/ohnosequences/scala-guide" target="blank" class="custom-link">Project home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://gitter.im/ohnosequences/scala-guide" target="blank" class="custom-link">Contact us</a>
+            </li>
+    	
+    	
+
+        
+        <li class="divider"></li>
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="Error-handling/README.html">
+            
+                
+                    <a href="../Error-handling/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         Error handling
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter active" data-level="1.1" data-path="Error-handling/Maths.html">
+            
+                
+                    <a href="../Error-handling/Maths.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         Maths
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="src/main/scala/errors.scala.html">
+            
+                
+                    <a href="../src/main/scala/errors.scala.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         Examples
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.3" data-path="src/test/scala/errors.scala.html">
+            
+                
+                    <a href="../src/test/scala/errors.scala.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                         Tests
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Oh no scala!</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_1">
+                    
+                        <h2 id="error-handling">Error handling</h2>
+<!-- toc -->
+<ul>
+<li><a href="#fail-fast">Fail fast</a></li>
+<li><a href="#accumulate">Accumulate</a></li>
+</ul>
+<!-- toc stop -->
+<blockquote class="clearfix alert alert-info"><strong class="fa fa-4x fa-info"></strong>
+<p> You can skip all this and look at the code; but please do mind the chasm between can and should</p>
+</blockquote>
+<p>Intuitively, handling errors is control flow and thus it should linked/make use of colimits. A simple but effective model is</p>
+<pre><code class="lang-scala"><span class="hljs-function"><span class="hljs-keyword">val</span> <span class="hljs-title">computation</span>:</span> <span class="hljs-type">Input</span> =&gt; <span class="hljs-type">Error</span> + <span class="hljs-type">Success</span>
+</code></pre>
+<p>which we want, of course, to be able compose. </p>
+<h3 id="fail-fast">Fail fast</h3>
+<p>Normally we want to fix the type of Errors, so we get a functor</p>
+<script type="math/tex; mode=display">
+C_E \colon \mathbf{Type} \to \mathbf{Type}</script><p>Letting our errors vary we can see this as a lax functor</p>
+<script type="math/tex; mode=display">
+C \colon (\mathbf{Type}, +) \to (\mathbf{Type} \Rightarrow \mathbf{Type}, \circ)</script><p>How? the unit is just <script type="math/tex">C_0 = Id</script> and the the lax (actually strong) structure comes from associativity: <script type="math/tex">C_E \circ C_F \to C_{E + F}</script>. Note that we are <strong>not</strong> saying anything about <em>each</em> <script type="math/tex">C_E</script>, it is <script type="math/tex">C</script> who&#39;s a lax monoidal functor. If you remember the characterization of cocartesian monoidal categories among monoidal ones, it wouldn&#39;t be a surprise to know that every <script type="math/tex">E</script> in <script type="math/tex">(\mathbf{Type}, +)</script> carries a unique <strong>monoid</strong> structure</p>
+<script type="math/tex; mode=display">
+\nabla \colon E + E \to E</script><p>defined as <script type="math/tex">\nabla = [1_E,1_E]</script>. Nice, so as lax monoidal functors preserve monoids there you have your error monad <script type="math/tex">C_E</script>. just for clarity, we get</p>
+<ul>
+<li>the functor map <script type="math/tex">F(f) \colon A + E \to B + E</script> is <script type="math/tex">f + 1_E</script></li>
+<li>the unit <script type="math/tex">i\colon A \to A + E</script> is just <code>success(a)</code></li>
+<li>and the multiplication <script type="math/tex">\mu \colon (A + E) + E \to A + E</script> is just <code>A</code> or else any <code>E</code></li>
+</ul>
+<p>Composition in the kleisli category gives you what is normally called &quot;fail-fast&quot; semantics; given</p>
+<ul>
+<li><script type="math/tex; mode=display">f \colon A \to E + B</script></li>
+<li><script type="math/tex; mode=display">g \colon B \to E + C</script></li>
+</ul>
+<p>Its composition <script type="math/tex">g\circ f</script> is <script type="math/tex">\mu T(g) f = \mu (g + 1_E) f</script> which if you follow the arrows means: evaluate <script type="math/tex">f</script>, if it fails return <script type="math/tex">E</script>; if not evaluate <script type="math/tex">g</script> on the result of <script type="math/tex">f</script>. As expected, short-circuiting is implemented in terms of colimit derived operations.</p>
+<h3 id="accumulate">Accumulate</h3>
+<p>Again let&#39;s fix <script type="math/tex">E</script>. Compared with the &quot;fail-fast&quot; case, we need to assume <strong>two</strong> important things:</p>
+<ol>
+<li><script type="math/tex">\mathbf{Type}</script> is distributive</li>
+<li><script type="math/tex">E</script> is a monoid</li>
+</ol>
+<p>With this ingredients it&#39;s fairly easy to make <script type="math/tex">E + \_</script> a lax monoidal functor; the lax structure map needs to go</p>
+<script type="math/tex; mode=display">
+\alpha \colon (E + A) \times (E + B) \to E + (A \times B)</script><p>Making use of distributivity (could actually be lax)</p>
+<script type="math/tex; mode=display">
+\alpha \colon E^2 + (E \times A) + (E \times B) + (A \times B) \to E + (A \times B)</script><p>and our map is <script type="math/tex">\alpha_{A,B} = [m_E, \pi_E, \pi_E] + 1_{A \times B}</script>. The lax monoidal structure derived from the fail-fast monad would be just return <script type="math/tex">E</script> if present anywhere, else <script type="math/tex">(A \times B)</script>.</p>
+<p>This is <code>Validation[E,X]</code>.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Error-handling/README.html" class="navigation navigation-prev " aria-label="Previous page: Error handling"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../src/main/scala/errors.scala.html" class="navigation navigation-next " aria-label="Next page: Examples"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"richquotes":{"todos":true}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
