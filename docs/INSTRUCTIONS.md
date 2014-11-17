@@ -33,10 +33,10 @@ These steps you need to do only once.
 
     Note, that it will create a local `node_modules/` folder which should be ignored by git.
 
-1. Clone the `gh-pages` branch in a separate folder named `_book/`:
+1. Clone the `gh-pages` branch in a separate folder named `_gh-pages`:
 
     ```bash
-    git clone --single-branch -b gh-pages https://github.com/ohnosequences/scala-guide.git _book
+    git clone --single-branch -b gh-pages https://github.com/ohnosequences/scala-guide.git _gh-pages
     ```
 
 
@@ -84,20 +84,4 @@ You can edit the content and once you save it the site will be updated automatic
 Once you're fine with the changes you've introduced 
 
 1. Commit them if you're in the `master` branch, or merge if you were working in a separate pull-request
-
-1. Compile the book:
-
-    ```bash
-    gitbook build
-    ```
-
-1. Now push result to the `gh-pages` branch:
-
-    ```bash
-    cd _book
-    git commit -am "Updated the git-book content"
-    git push origin gh-pages
-    cd ..
-    ```
-
-You can use the `book.publish.sh` script for the last two steps.
+1. Use the `book.publish.sh` script to copy generated book to the `gh-pages` branch and push it

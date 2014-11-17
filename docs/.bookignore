@@ -1,5 +1,4 @@
 *.sh
-
-# internal docs
+_gh-pages/
 INSTRUCTIONS.md
 notes.md

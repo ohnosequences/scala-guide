@@ -23,4 +23,5 @@ credentials.sbt
 
 # git-book
 _book/
+_gh-pages/
 node_modules/
