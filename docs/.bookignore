@@ -1,0 +1,9 @@
+# scala files
+src/
+*.sbt
+project/
+target/
+
+# internal docs
+docs/
+Instructions.md

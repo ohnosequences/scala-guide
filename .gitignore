@@ -20,3 +20,7 @@ data/in/
 data/out/
 
 credentials.sbt
+
+# git-book
+_book/
+node_modules/
