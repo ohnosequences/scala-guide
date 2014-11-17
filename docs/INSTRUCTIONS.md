@@ -3,7 +3,7 @@
 The general workflow:
 
 - All the gitbook stuff is happening in the `docs/` folder
-- Every chapter is in it's own folder inside of `docs/` with `README.md` introduction and any related text in separate `.md` files
+- Every chapter is in it's own folder inside of `docs/topics/` with `readme.md` introduction and any related text in separate `.md` files
 - The code samples are stored in `src/` folder (like a normal sbt-project)
 - They will be transformed to markdown in `docs/src/...` by literator
 - Then everything is linked by the `SUMMARY.md` file

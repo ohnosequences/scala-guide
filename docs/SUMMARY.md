@@ -1,6 +1,6 @@
 # Summary
 
-* [Error handling](Error-handling/README.md)
-    - [Maths](Error-handling/Maths.md)
+* [Error handling](topics/error-handling/readme.md)
+    - [Maths](topics/error-handling/maths.md)
     - [Examples](src/main/scala/errors.scala.md)
     - [Tests](src/test/scala/errors.scala.md)
