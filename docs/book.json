@@ -3,17 +3,15 @@
     "generator": "site",
 
     "title": "Oh no scala!",
-    "description": "The advanced Scala helper",
+    "description": "The Advanced Scala Helper",
 
     "plugins": [
         "richquotes"
     ],
 
     "pluginsConfig": {
-        "fontSettings": {
-            "theme": "white",
-            "family": "sans",
-            "size": 1
+         "richquotes" : {
+            "todos" : true
         }
     },
 
@@ -21,13 +19,13 @@
 
     "links": {
         "sidebar": {
-            "Project repository": "https://github.com/ohnosequences/scala-guide",
+            "Project home": "https://github.com/ohnosequences/scala-guide",
             "Contact us": "https://gitter.im/ohnosequences/scala-guide"
         },
 
         "sharing": {
             "facebook": "",
-            "twitter": "",
+            "twitter": "https://github.com/ohnosequences/scala-guide",
             "all": null
         }
     }

@@ -22,7 +22,7 @@ These steps you need to do only once.
 
     Note, that it will create a local `node_modules/` folder which should be ignored by git.
 
-1. Clone the `gh-pages` branch in a separate folder
+1. Clone the `gh-pages` branch in a separate folder named `_book/`:
 
     ```bash
     git clone --single-branch -b gh-pages https://github.com/ohnosequences/scala-guide.git _book
@@ -37,8 +37,13 @@ These steps you need to do only once.
 
 ## Config
 
-**Very important**: `book.json` config cannot have comments. With comments it won't say you anything, like it's fine, but won't actually read this config
+**Very important**: `book.json` config cannot have comments. With comments gitbook doesn't complain, but it won't actually read this config.
 
+### Plugins
+
+* [Rich quotes](https://github.com/erixtekila/gitbook-plugin-richquotes)
+  You can use quotes with annotation, like `> **Info** Info` and it will be shown nicely in the result (see the link for the full list)
+* [TOC]()
 
 ## Preview
 
