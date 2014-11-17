@@ -1,25 +1,33 @@
 # Instructions on working with this git-book
 
-All work on the book is performed in the `docs/` folder of the [ohnosequences/scala-guide](https://github.com/ohnosequences/scala-guide) repository.
+The general workflow:
 
-## Prerequisites
+- Every chapter is in it's own folder inside of `docs/` with `README.md` introduction and any related text in separate `.md` files
+- The code samples are stored in `src/` folder (like a normal sbt-project)
+- They will be transformed to markdown in `docs/src/...` by literator
+- Then everything is linked by the `SUMMARY.md` file
+- Built to the `_book/` folder and pushed to the `gh-pages` branch
+
+
+## First-time preparation
 
 These steps you need to do only once.
 
-1. First install all the node.js things:
+1. First install all the gitbook tools using [npm](https://github.com/npm/npm):
 
     ```bash
     npm install gitbook -g
-    npm install gitbook-plugin-katex gitbook-plugin-richquotes
+    npm install gitbook-plugin-katex gitbook-plugin-richquotes gitbook-plugin-share
     ```
+
+    Note, that it will create a local `node_modules/` folder which should be ignored by git.
 
 1. Clone the `gh-pages` branch in a separate folder
 
-    Maybe there is a better solution for this, but here is a straightforward one:
-
     ```bash
-    git clone --single-branch gh-pages ... _book
+    git clone --single-branch -b gh-pages https://github.com/ohnosequences/scala-guide.git _book
     ```
+
 
 ## Editing
 

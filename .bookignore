@@ -5,5 +5,4 @@ project/
 target/
 
 # internal docs
-docs/
-Instructions.md
+INSTRUCTIONS.md

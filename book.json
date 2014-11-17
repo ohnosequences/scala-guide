@@ -16,7 +16,9 @@
     // Plugins list, can contain "-name" for removing default plugins
     "plugins": [
         "katex",
-        "richquotes"
+        "richquotes",
+        "anchors"
+        // "share"
     ],
 
     // Global configuration for plugins
@@ -30,6 +32,11 @@
         "richquotes" : {
             "todos" : true
         }
+
+        // "share": {
+        //     "twitter": null,
+        //     "facebook": null
+        // }
     },
 
     // Variables for templating
@@ -38,17 +45,18 @@
     // Links in template (null: default, false: remove, string: new value)
     "links": {
         // Custom links at top of sidebar
-        // "sidebar": {
-        //     "Custom link name": "https://customlink.com"
-        // },
+        "sidebar": {
+            "Project repository": "https://github.com/ohnosequences/scala-guide",
+            "Contact us": "https://gitter.im/ohnosequences/scala-guide"
+        },
 
         // Sharing links
-        // "sharing": {
-        //     "google": null,
-        //     "facebook": null,
-        //     "twitter": null,
-        //     "weibo": null,
-        //     "all": null
-        // }
+        "sharing": {
+            // "google": null,
+            "facebook": null,
+            "twitter": null,
+            // "weibo": null,
+            "all": null
+        }
     }
 }
