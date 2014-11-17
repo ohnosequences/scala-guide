@@ -41,21 +41,7 @@ class ErrorHandlingExamples extends FunSuite {
 ```
 
 
-------
 
-### Index
-
-+ src
-  + main
-    + scala
-      + [errors.scala][main/scala/errors.scala]
-      + [existentials.scala][main/scala/existentials.scala]
-      + [refinementsAndWith.scala][main/scala/refinementsAndWith.scala]
-      + [taggedTypes.scala][main/scala/taggedTypes.scala]
-      + [typeMembers.scala][main/scala/typeMembers.scala]
-  + test
-    + scala
-      + [errors.scala][test/scala/errors.scala]
 
 [main/scala/errors.scala]: ../../main/scala/errors.scala.md
 [main/scala/existentials.scala]: ../../main/scala/existentials.scala.md
