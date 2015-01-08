@@ -1,3 +1,5 @@
+
+```scala
 package ohnosequences.scalaguide
 
 trait AnyImageOfAux {
@@ -26,7 +28,6 @@ sealed class ImageOfAux[F0[_], FA0 <% F0[A0], A0] extends ImageOf[F0, FA0] with 
 object ImageOf {
  
   type imgOf[F[_]] = {
-    type λ[FA] = ImageOf[F,FA]
     type is[FA] = ImageOf[F,FA]
   }
 
@@ -73,19 +74,6 @@ object Test {
     val buh:String = doSomething(uh)
 
     val hub = doSomething(List(new A {})).something
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // functors
@@ -141,3 +129,15 @@ object Test {
     
   }
 }
+
+```
+
+
+
+
+[main/scala/errors.scala]: errors.scala.md
+[main/scala/existentials.scala]: existentials.scala.md
+[main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
+[main/scala/taggedTypes.scala]: taggedTypes.scala.md
+[main/scala/typeMembers.scala]: typeMembers.scala.md
+[test/scala/errors.scala]: ../../test/scala/errors.scala.md

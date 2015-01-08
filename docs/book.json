@@ -1,0 +1,34 @@
+{
+    "generator": "site",
+
+    "title": "Oh no scala!",
+    "description": "The Advanced Scala Helper",
+
+    "plugins": [
+        "mathjax",
+        "-katex",
+        "richquotes",
+        "toc"
+    ],
+
+    "pluginsConfig": {
+         "richquotes" : {
+            "todos" : true
+        }
+    },
+
+    "variables": {},
+
+    "links": {
+        "sidebar": {
+            "Project home": "https://github.com/ohnosequences/scala-guide",
+            "Contact us": "https://gitter.im/ohnosequences/scala-guide"
+        },
+
+        "sharing": {
+            "facebook": "https://github.com/ohnosequences/scala-guide",
+            "twitter": "https://github.com/ohnosequences/scala-guide",
+            "all": null
+        }
+    }
+}

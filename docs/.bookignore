@@ -1,0 +1,4 @@
+*.sh
+_gh-pages/
+INSTRUCTIONS.md
+notes.md

@@ -1,3 +1,5 @@
+
+```scala
 package ohnosequences.scalaguide
 
 trait Uh
@@ -16,3 +18,15 @@ object Foo {
   // crashes
   // def baz3[X](foo: Foo[X]): Foo[X with Int] = foo bar 1
 }
+
+```
+
+
+
+
+[main/scala/errors.scala]: errors.scala.md
+[main/scala/existentials.scala]: existentials.scala.md
+[main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
+[main/scala/taggedTypes.scala]: taggedTypes.scala.md
+[main/scala/typeMembers.scala]: typeMembers.scala.md
+[test/scala/errors.scala]: ../../test/scala/errors.scala.md
