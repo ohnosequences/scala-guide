@@ -43,9 +43,10 @@ class ErrorHandlingExamples extends FunSuite {
 
 
 
-[main/scala/errors.scala]: ../../main/scala/errors.scala.md
-[main/scala/existentials.scala]: ../../main/scala/existentials.scala.md
-[main/scala/refinementsAndWith.scala]: ../../main/scala/refinementsAndWith.scala.md
-[main/scala/taggedTypes.scala]: ../../main/scala/taggedTypes.scala.md
-[main/scala/typeMembers.scala]: ../../main/scala/typeMembers.scala.md
 [test/scala/errors.scala]: errors.scala.md
+[main/scala/override.scala]: ../../main/scala/override.scala.md
+[main/scala/typeMembers.scala]: ../../main/scala/typeMembers.scala.md
+[main/scala/taggedTypes.scala]: ../../main/scala/taggedTypes.scala.md
+[main/scala/refinementsAndWith.scala]: ../../main/scala/refinementsAndWith.scala.md
+[main/scala/existentials.scala]: ../../main/scala/existentials.scala.md
+[main/scala/errors.scala]: ../../main/scala/errors.scala.md
