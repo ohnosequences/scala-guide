@@ -1,9 +1,11 @@
+
+```scala
 package ohnosequences.scalaguide.typeclasses
 
 import ohnosequences.cosas.types._
+```
 
 
-/*
 ## Typeclasses
 
 You need to be able to indentify at compile time
@@ -15,27 +17,42 @@ You need to be able to indentify at compile time
 Given all that, if you have a value of the corresponding type `x: NatRing := Int` you will get an instance of the corresponding type class through an implicit conversion `(Int Denotes NatRing) => RingOps[NatRing, Int]`. `RingOps` is another value class, wrapping `Int` in this case.
 
 _TODO: coercions?_
-*/
+
+
+```scala
 object algs {
+```
 
-  /* This the base type that you are defining */
+This the base type that you are defining
+
+```scala
   trait AnyAlg extends AnyType
-  /* 
-  We use denotations to recognize at compile-time that a type (`T#Raw` in this case) is used to denote `T`. For example, the additive monoid for integers. We would have something like `IntPlusMonoid <: AnyAlg`, which could be denoted by `Int`s; we would have to specify then `IntPlusMonoid#Raw = Int`.
-  */
-  type U[T <: AnyAlg] = T#Raw Denotes T
+```
 
-  /*
+
+  We use denotations to recognize at compile-time that a type (`T#Raw` in this case) is used to denote `T`. For example, the additive monoid for integers. We would have something like `IntPlusMonoid <: AnyAlg`, which could be denoted by `Int`s; we would have to specify then `IntPlusMonoid#Raw = Int`.
+
+
+```scala
+  type U[T <: AnyAlg] = T#Raw Denotes T
+```
+
+
   A way of thinking about ops is as the real signature for your type, abstracted over the type used to denote it.
-  */
+
+
+```scala
   trait AnyAlgOps extends Any {
 
     type Alg <: AnyAlg
   }
+```
 
-  /*
+
   ### A simple example: Groups
-  */
+
+
+```scala
   trait AnyGroup extends AnyAlg
   trait Group[T] extends AnyGroup { type Raw = T }
   // signature
@@ -49,21 +66,30 @@ object algs {
     def inverse(arg: U[Alg]): U[Alg]
   }
   trait GroupOps[G <: AnyGroup] extends AnyGroupOps { type Alg = G }
+```
 
-  /* Nice! now what about syntax/extensions for this? */
+Nice! now what about syntax/extensions for this?
+
+```scala
   trait AnyGroupSyntax extends Any with AnyDenotation {
 
     type Tpe <: AnyGroup
     type Value = Tpe#Raw
   }
+```
 
-  /* the companion object provides syntax */
+the companion object provides syntax
+
+```scala
   object StdGroupSyntax {
 
     implicit def syntax[R <: G#Raw, G <: AnyGroup](g: R Denotes G)(implicit ops: AnyGroupOps { type Alg = G }): StdGroupSyntax[G] = new StdGroupSyntax[G](g.value)
   }
+```
 
-  /* define your syntax here, through a value class */
+define your syntax here, through a value class
+
+```scala
   final class StdGroupSyntax[G <: AnyGroup](val value: G#Raw) extends AnyVal with AnyGroupSyntax {
 
     type Tpe = G
@@ -116,3 +142,18 @@ object algs {
 
 
 
+
+```
+
+
+
+
+[test/scala/monoidsExample.scala]: ../../test/scala/monoidsExample.scala.md
+[test/scala/errors.scala]: ../../test/scala/errors.scala.md
+[main/scala/override.scala]: override.scala.md
+[main/scala/typeMembers.scala]: typeMembers.scala.md
+[main/scala/taggedTypes.scala]: taggedTypes.scala.md
+[main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
+[main/scala/typeclasses.scala]: typeclasses.scala.md
+[main/scala/existentials.scala]: existentials.scala.md
+[main/scala/errors.scala]: errors.scala.md
