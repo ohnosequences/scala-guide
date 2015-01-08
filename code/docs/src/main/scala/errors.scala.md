@@ -8,13 +8,17 @@ package ohnosequences.scalaguide.errors
 
 _You can skip all this and look at the code; but please do mind the chasm between can and should_
 
-Intuitively, handling errors is control flow and thus it should linked/make use of colimits. A simple but effective model is
+Intuitively, handling errors is control flow and thus it should be linked/make use of colimits. A simple but effective model is to structure computations as
 
 ``` scala
-val computation: Input => Error + Success
+val computation: Input => (Error + Success)
 ```
 
-which we want, of course, to be able compose. 
+which we want, of course, to be able to compose. A simplifying assumption is (given the limitations of Scala in particular and existing programming languages in general) to _fix_ the `Error` type; in this case our notion of computation with errors look like arrows in the Kleisli category of the functor
+
+$$
+
+$$
 
 ### fail fast
 
@@ -72,6 +76,13 @@ and our map is $\alpha_{A,B} = [m_E, \pi_E, \pi_E] + 1_{A \times B}$. The lax mo
 
 This is `Validation[E,X]`.
 
+
+### algebras for applicatives
+
+- applicatives are actually pointed lax monoidal functors
+- algebras are important; they are something akin to evaluation strategies; think about futures.
+- in the case of errors they give us a way of handling errors that is not going to introduce more errors :)
+
 -----
 
 _TODO complete this_
@@ -109,22 +120,7 @@ trait Error[T]
 case class MustHaveLengthFive(s: String) extends Error[Wonky]
 case class MustBePalindromic(s: String) extends Error[Wonky]
 
-object checks {
-
-  // type ErrorsOr[A] = ValidationNel[Error[Wonky], A]
-
-  // def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) MustHaveLengthFive(s).failureNel else s.success 
-  // def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) MustBePalindromic(s).failureNel else s.success 
-}
-
-case class Wonky protected[errors] (val five: String, val palindrome: String)
-
-object ValidWonky {
-
-  import FailFastChecks._ 
-    
-    def apply(a: String, b: String) = ( lengthFive(a).validationNel |@| palindromic(b).validationNel )(Wonky.apply _)
-}
+case class Wonky protected[errors](val five: String, val palindrome: String)
 
 object FailFastChecks {
 
@@ -133,26 +129,37 @@ object FailFastChecks {
   def lengthFive(s: String): ErrorsOr[String] = if (s.size != 5) -\/(MustHaveLengthFive(s)) else \/-(s)
   def palindromic(s: String): ErrorsOr[String] = if (s != s.reverse) -\/(MustBePalindromic(s)) else \/-(s)
 
-  // TODO use Scalaz
+  // TODO: add this to Scalaz
   implicit class ErrorstoV[A](val v: ErrorsOr[A]) {
 
     def validationNel: ValidationNel[Error[Wonky], A] = v match {
-
       case -\/(e) => e.failureNel
       case \/-(a) => a.success
     }
   }
-  
+}
+```
+
+Two constructors for `Wonky`. See difference in the tests
+
+```scala
+object AccumulativeWonky {
+  import FailFastChecks._ 
+    
+  def apply(fiveChars: String, palindrome: String): ValidationNel[Error[Wonky], Wonky] =
+    (lengthFive(fiveChars).validationNel |@| 
+     palindromic(palindrome).validationNel
+    )(Wonky.apply _)
 }
 
 object FailFastWonky {
-
   import FailFastChecks._ 
     
-  def apply(a: String, b: String) = ( lengthFive(a) |@| palindromic(b) )(Wonky.apply _)
+  def apply(fiveChars: String, palindrome: String): Validation[Error[Wonky], Wonky] = 
+    (lengthFive(fiveChars) |@|
+     palindromic(palindrome)
+    )(Wonky.apply _).validation 
 }
-
-// write tests if you want to see the difference
 
 ```
 
@@ -165,8 +172,10 @@ object FailFastWonky {
   + test
     + scala
       + [Scalaguide.scala][test/scala/Scalaguide.scala]
+      + [errors.scala][test/scala/errors.scala]
   + main
     + scala
+      + [override.scala][main/scala/override.scala]
       + [typeMembers.scala][main/scala/typeMembers.scala]
       + [taggedTypes.scala][main/scala/taggedTypes.scala]
       + [refinementsAndWith.scala][main/scala/refinementsAndWith.scala]
@@ -175,6 +184,8 @@ object FailFastWonky {
       + [errors.scala][main/scala/errors.scala]
 
 [test/scala/Scalaguide.scala]: ../../test/scala/Scalaguide.scala.md
+[test/scala/errors.scala]: ../../test/scala/errors.scala.md
+[main/scala/override.scala]: override.scala.md
 [main/scala/typeMembers.scala]: typeMembers.scala.md
 [main/scala/taggedTypes.scala]: taggedTypes.scala.md
 [main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md

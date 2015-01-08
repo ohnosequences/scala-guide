@@ -99,8 +99,10 @@ object UseOp {
   + test
     + scala
       + [Scalaguide.scala][test/scala/Scalaguide.scala]
+      + [errors.scala][test/scala/errors.scala]
   + main
     + scala
+      + [override.scala][main/scala/override.scala]
       + [typeMembers.scala][main/scala/typeMembers.scala]
       + [taggedTypes.scala][main/scala/taggedTypes.scala]
       + [refinementsAndWith.scala][main/scala/refinementsAndWith.scala]
@@ -109,6 +111,8 @@ object UseOp {
       + [errors.scala][main/scala/errors.scala]
 
 [test/scala/Scalaguide.scala]: ../../test/scala/Scalaguide.scala.md
+[test/scala/errors.scala]: ../../test/scala/errors.scala.md
+[main/scala/override.scala]: override.scala.md
 [main/scala/typeMembers.scala]: typeMembers.scala.md
 [main/scala/taggedTypes.scala]: taggedTypes.scala.md
 [main/scala/refinementsAndWith.scala]: refinementsAndWith.scala.md
