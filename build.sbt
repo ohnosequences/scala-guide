@@ -4,7 +4,7 @@ organization  := "ohnosequences"
 name          := "scala-guide"
 description   := ""
 
-scalaVersion  := "2.11.4"
+scalaVersion  := "2.11.5"
 
 libraryDependencies ++= Seq(
   "org.scalaz"    %% "scalaz-core" % "7.1.0",

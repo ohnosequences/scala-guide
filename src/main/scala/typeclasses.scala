@@ -173,7 +173,42 @@ object algs {
 
     implicit val me: IntField.type = IntField
   }
+
+
+
+
+  trait AnyList extends AnyType
+  case class List[L]() extends AnyList { type Raw = L; val label = "List[L]" }
+
+  trait AnyListSignature extends Any {
+
+    type L <: AnyList
+
+    def fold[Z](nil: Z)(op: (L#Raw, Z) => Z): Z 
+  }
+
+  // a particular impl
+  import scala.annotation.tailrec
+  trait LinkedListImpl[X] extends Any with AnyListSignature {
+
+    type L <: AnyList { type Raw = X }
+
+    def head: X
+    def tail: LinkedListImpl[X]
+
+    @tailrec final def fold[Z](nil: Z)(op: (L#Raw, Z) => Z): Z = tail.fold( op(head, nil) )( op )
+  }
+
+  // add an object nil with a method cons that would return this nil with the right type. Say no to `Nothing`!
+  final class nilOps[X] extends LinkedListImpl[X] {
+
+    type L = List[X]
+
+    final def tail = this
+    final def head = ???
+  }
+  case class consOps[X](val head: X, val tail: LinkedListImpl[X]) extends LinkedListImpl[X] {
+
+    type L = List[X]
+  }
 }
-
-
-
